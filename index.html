@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontage | Digital Storefront Displays Christchurch</title>
+  <style>
+    :root {
+      --bg: #07070a;
+      --panel: #111118;
+      --panel-soft: #171722;
+      --text: #f7f7fb;
+      --muted: #b7b7c6;
+      --accent: #7cffd4;
+      --accent-2: #8d5cff;
+      --line: rgba(255,255,255,0.12);
+      --white: #ffffff;
+      --dark: #050507;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(7,7,10,0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 750;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #050507;
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 72px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124,255,212,0.16), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(141,92,255,0.22), transparent 30%),
+        linear-gradient(180deg, #08080d 0%, #07070a 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: rgba(124,255,212,0.06);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      margin-bottom: 26px;
+    }
+
+    .hero p {
+      font-size: 1.22rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-note {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .mock-window {
+      position: relative;
+      min-height: 520px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015)),
+        url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=80') center/cover;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.55);
+      overflow: hidden;
+    }
+
+    .mock-window::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(5,5,7,0.72), rgba(5,5,7,0.22));
+    }
+
+    .display-card {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 34px;
+      border: 1px solid rgba(124,255,212,0.42);
+      background: rgba(5,5,7,0.62);
+      backdrop-filter: blur(8px);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 0 60px rgba(124,255,212,0.22);
+    }
+
+    .display-card .tag {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .display-card h2 {
+      font-size: 2.35rem;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .display-card p {
+      margin: 0;
+      color: #dfdff0;
+      font-size: 1rem;
+    }
+
+    section {
+      padding: 86px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel-soft), var(--panel));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+    }
+
+    .card .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      background: rgba(124,255,212,0.1);
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .tick {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .offer-card {
+      background: #fff;
+      color: #111118;
+      border-radius: 28px;
+      padding: 30px;
+    }
+
+    .offer-card.featured {
+      background: linear-gradient(135deg, #7cffd4, #8d5cff);
+    }
+
+    .offer-card h3 {
+      font-size: 1.5rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .offer-card .price {
+      font-size: 2rem;
+      font-weight: 850;
+      letter-spacing: -0.05em;
+      margin-bottom: 20px;
+    }
+
+    .offer-card ul {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      color: #333342;
+    }
+
+    .dark-band {
+      background: linear-gradient(135deg, rgba(124,255,212,0.1), rgba(141,92,255,0.12));
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: block;
+      color: var(--accent);
+      font-weight: 850;
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+    }
+
+    .cta {
+      text-align: center;
+      padding: 96px 0;
+    }
+
+    .cta h2 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: -0.07em;
+      margin-bottom: 22px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 30px;
+      font-size: 1.12rem;
+    }
+
+    .form-box {
+      max-width: 760px;
+      margin: 32px auto 0;
+      padding: 24px;
+      background: #fff;
+      color: #111118;
+      border-radius: 28px;
+      text-align: left;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 15px 16px;
+      border: 1px solid #dedee8;
+      border-radius: 14px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      grid-column: 1 / -1;
+    }
+
+    .form-box button {
+      margin-top: 14px;
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid, .split, .cards, .offer, .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .mock-window {
+        min-height: 440px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">Frontage<span>.</span></a>
+      <nav class="nav-links">
+        <a href="#why">Why it works</a>
+        <a href="#offer">Offer</a>
+        <a href="#process">Process</a>
+        <a href="#apply" class="btn btn-primary">Apply for Founding 3</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Christchurch digital storefront displays</div>
+          <h1>Turn your storefront into media.</h1>
+          <p>Frontage helps high-visibility Christchurch businesses transform unused shopfront glass into bright, transparent digital displays that promote offers, menus, launches and brand content without fully blocking the window.</p>
+          <div class="hero-actions">
+            <a href="#apply" class="btn btn-primary">Apply for a free storefront review</a>
+            <a href="#offer" class="btn btn-secondary">See how it works</a>
+          </div>
+          <div class="hero-note">Now selecting our first Christchurch showcase sites across beauty, wellness, hospitality, fitness and premium retail.</div>
+        </div>
+
+        <div class="mock-window" aria-label="Mock storefront display preview">
+          <div class="display-card">
+            <div class="tag">Transparent window display</div>
+            <h2>Winter Skin Reset</h2>
+            <p>Promote offers, events and campaigns right where people already walk past.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container">
+        <div class="section-head">
+          <h2>Your window is already visible. It should be working harder.</h2>
+          <p>Most shopfronts rely on static posters, decals, lightboxes or empty glass. We help turn that frontage into a reusable attention channel for local campaigns.</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="icon">✦</div>
+            <h3>Capture attention</h3>
+            <p>Dynamic content gives people a reason to look up, stop, and notice your business instead of walking past.</p>
+          </div>
+          <div class="card">
+            <div class="icon">◈</div>
+            <h3>Keep visibility</h3>
+            <p>Transparent display technology lets you promote campaigns while keeping the sense of openness through your glass.</p>
+          </div>
+          <div class="card">
+            <div class="icon">↻</div>
+            <h3>Change campaigns fast</h3>
+            <p>Swap seasonal offers, launches, menus, event promos and brand messages without printing new signage every time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-band">
+      <div class="container split">
+        <div class="section-head">
+          <h2>Built for Christchurch businesses with visible frontage.</h2>
+          <p>We are starting with high-impact local businesses where attention quickly turns into enquiry, bookings, walk-ins or brand lift.</p>
+        </div>
+        <div class="list">
+          <div class="list-item"><span class="tick">✓</span><div><strong>Beauty, skin, cosmetic and hair clinics</strong><br><span>Promote consultations, treatment offers, seasonal campaigns and premium brand content.</span></div></div>
+          <div class="list-item"><span class="tick">✓</span><div><strong>Gyms, Pilates and wellness studios</strong><br><span>Show trials, challenges, class launches and membership campaigns to people nearby.</span></div></div>
+          <div class="list-item"><span class="tick">✓</span><div><strong>Hospitality and food venues</strong><br><span>Feature menus, specials, events, launches and evening offers in a more visual way.</span></div></div>
+          <div class="list-item"><span class="tick">✓</span><div><strong>Premium retail, auto and real estate</strong><br><span>Create stronger street presence for new arrivals, product drops, listings and promotions.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offer">
+      <div class="container">
+        <div class="section-head">
+          <h2>Start with a storefront concept, then scale into a full display.</h2>
+          <p>We make the idea tangible before you commit. The first step is seeing what your actual frontage could become.</p>
+        </div>
+        <div class="offer">
+          <div class="offer-card">
+            <h3>Storefront Review</h3>
+            <div class="price">Free</div>
+            <ul>
+              <li>Frontage suitability review</li>
+              <li>Basic opportunity assessment</li>
+              <li>Display size recommendation</li>
+              <li>Approval and install flags</li>
+            </ul>
+          </div>
+          <div class="offer-card featured">
+            <h3>Concept Mockup</h3>
+            <div class="price">Founding sites</div>
+            <ul>
+              <li>Mockup using your real storefront</li>
+              <li>Campaign example for your business</li>
+              <li>Rough price range</li>
+              <li>Clear next-step plan</li>
+            </ul>
+          </div>
+          <div class="offer-card">
+            <h3>Pilot Install</h3>
+            <div class="price">Quoted</div>
+            <ul>
+              <li>Site measurement</li>
+              <li>Display supply and installation</li>
+              <li>Launch content pack</li>
+              <li>Support and optional monthly content</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <h2>How the first Christchurch showcase sites will work.</h2>
+          <p>We are looking for a small number of ideal early sites, not trying to sell to everyone.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <h3>Apply</h3>
+            <p>Tell us about your business, frontage and what you want to promote.</p>
+          </div>
+          <div class="step">
+            <h3>Review</h3>
+            <p>We assess visibility, glass layout, approval complexity and campaign potential.</p>
+          </div>
+          <div class="step">
+            <h3>Mockup</h3>
+            <p>If suitable, we create a practical concept using your actual storefront.</p>
+          </div>
+          <div class="step">
+            <h3>Install</h3>
+            <p>Approved pilot sites move into measurement, supply, installation and launch content.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="section-head">
+          <h2>The Founding 3 Christchurch Storefronts.</h2>
+          <p>We are selecting three early showcase businesses with strong frontage and a visual brand. These sites receive priority concept work and preferred pilot pricing in exchange for allowing us to document the transformation.</p>
+        </div>
+        <div class="card">
+          <h3>Best suited for businesses that have:</h3>
+          <div class="list" style="margin-top: 18px;">
+            <div class="list-item"><span class="tick">✓</span><div>High-visibility street or precinct frontage</div></div>
+            <div class="list-item"><span class="tick">✓</span><div>Clear glass facing foot or vehicle traffic</div></div>
+            <div class="list-item"><span class="tick">✓</span><div>Regular offers, launches, menus, events or campaigns</div></div>
+            <div class="list-item"><span class="tick">✓</span><div>A willingness to be featured in before and after content</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply" class="cta">
+      <div class="container">
+        <h2>Want to see your storefront transformed?</h2>
+        <p>Apply for a free Christchurch storefront review. If your site is a good fit, we’ll show you what your window could look like as a transparent digital display.</p>
+        <div class="form-box">
+          <form>
+            <div class="form-grid">
+              <input type="text" placeholder="Name" />
+              <input type="email" placeholder="Email" />
+              <input type="text" placeholder="Business name" />
+              <input type="text" placeholder="Suburb / location" />
+              <select>
+                <option>Business type</option>
+                <option>Beauty / skin / hair</option>
+                <option>Gym / Pilates / wellness</option>
+                <option>Hospitality</option>
+                <option>Retail</option>
+                <option>Auto</option>
+                <option>Real estate</option>
+                <option>Other</option>
+              </select>
+              <input type="text" placeholder="Website or Instagram" />
+              <textarea placeholder="Tell us what you would want to promote on your storefront display."></textarea>
+            </div>
+            <button class="btn btn-primary" type="button">Request storefront review</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Frontage. Digital storefront display concepts for Christchurch businesses.
+    </div>
+  </footer>
+</body>
+</html>
