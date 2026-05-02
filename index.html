@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Frontage helps Christchurch businesses turn high-traffic shopfront glass into transparent digital displays that promote offers, launches, menus and brand content." />
-  <title>Frontage | Transparent Digital Storefront Displays Christchurch</title>
+  <title>Christchurch Storefront Media | Transparent LED Window Displays</title>
+  <meta name="description" content="Turn your Christchurch storefront window into a high-impact digital display for offers, menus, launches, events and brand content. Apply for a free storefront mockup." />
   <style>
     :root {
-      --bg: #060609;
-      --bg-2: #0b0b12;
-      --panel: #11111a;
-      --panel-soft: #181824;
-      --text: #f8f8fc;
-      --muted: #b8b8c8;
-      --muted-2: #8f90a3;
-      --accent: #79ffd8;
-      --accent-2: #8c62ff;
-      --accent-3: #ffed7a;
-      --line: rgba(255,255,255,0.12);
-      --white: #ffffff;
-      --dark: #050507;
-      --success: #79ffd8;
-      --danger: #ff7a9c;
+      --bg: #05070f;
+      --bg-soft: #0c1020;
+      --card: rgba(255,255,255,0.07);
+      --card-strong: rgba(255,255,255,0.12);
+      --text: #f7f8ff;
+      --muted: #b4bbd4;
+      --muted-2: #7f89a8;
+      --line: rgba(255,255,255,0.14);
+      --purple: #7c3cff;
+      --violet: #5e21e6;
+      --cyan: #2de2ff;
+      --lime: #b5ff4d;
+      --pink: #ff4fd8;
+      --shadow: 0 30px 80px rgba(0,0,0,.45);
+      --radius: 26px;
+      --max: 1180px;
     }
 
     * {
@@ -35,8 +36,12 @@
     }
 
     body {
-      font-family: Inter, Arial, sans-serif;
-      background: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(94,33,230,.34), transparent 30%),
+        radial-gradient(circle at 86% 8%, rgba(45,226,255,.24), transparent 26%),
+        radial-gradient(circle at 55% 48%, rgba(255,79,216,.12), transparent 35%),
+        var(--bg);
       color: var(--text);
       line-height: 1.5;
       overflow-x: hidden;
@@ -47,85 +52,100 @@
       text-decoration: none;
     }
 
+    img, video {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
-      width: min(1160px, 92%);
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
     }
 
-    .announcement {
-      background: linear-gradient(90deg, rgba(121,255,216,0.16), rgba(140,98,255,0.18));
-      border-bottom: 1px solid var(--line);
-      text-align: center;
-      padding: 10px 16px;
-      color: #f8f8fc;
-      font-size: 0.92rem;
-    }
-
-    .announcement strong {
-      color: var(--accent);
-    }
-
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 30;
-      background: rgba(6,6,9,0.84);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(5,7,15,.72);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .nav-inner {
+      height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 17px 0;
+      gap: 24px;
     }
 
-    .logo {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.28rem;
-      font-weight: 900;
-      letter-spacing: -0.05em;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -.03em;
     }
 
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #050507;
-      font-size: 0.9rem;
-      letter-spacing: 0;
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, var(--cyan), var(--violet) 54%, var(--pink));
+      box-shadow: 0 0 28px rgba(45,226,255,.34);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark:before {
+      content: "";
+      position: absolute;
+      inset: 8px 11px;
+      border: 2px solid rgba(255,255,255,.75);
+      border-top: none;
+      border-bottom: none;
+      transform: skewX(-10deg);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted-2);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-top: -2px;
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
       align-items: center;
+      gap: 26px;
+      font-size: 14px;
       color: var(--muted);
-      font-size: 0.94rem;
     }
 
-    .nav-links a:not(.btn):hover {
-      color: var(--white);
+    .nav-links a:hover {
+      color: white;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       padding: 14px 20px;
+      min-height: 48px;
       border-radius: 999px;
-      font-weight: 850;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-      border: 1px solid transparent;
-      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      border: 1px solid rgba(255,255,255,.16);
       cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      white-space: nowrap;
     }
 
     .btn:hover {
@@ -133,220 +153,277 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #050507;
-      box-shadow: 0 18px 50px rgba(121,255,216,0.18);
+      color: #07101d;
+      background: linear-gradient(135deg, #ffffff, #b7f7ff 40%, #d8c5ff);
+      box-shadow: 0 15px 40px rgba(45,226,255,.18);
     }
 
     .btn-secondary {
-      border-color: var(--line);
-      color: var(--white);
-      background: rgba(255,255,255,0.045);
+      background: rgba(255,255,255,.08);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.13);
+      border-color: rgba(255,255,255,.25);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: white;
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
     }
 
     .hero {
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 0 90px;
       overflow: hidden;
-      padding: 86px 0 78px;
-      background:
-        radial-gradient(circle at 16% 14%, rgba(121,255,216,0.17), transparent 30%),
-        radial-gradient(circle at 78% 8%, rgba(140,98,255,0.23), transparent 34%),
-        linear-gradient(180deg, #090911 0%, #060609 100%);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -10% -30% -10%;
-      height: 300px;
-      background: radial-gradient(circle, rgba(121,255,216,0.08), transparent 66%);
-      pointer-events: none;
     }
 
     .hero-grid {
-      position: relative;
-      z-index: 2;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 52px;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 58px;
       align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 13px;
-      border: 1px solid rgba(121,255,216,0.26);
+      gap: 10px;
+      color: #dbeeff;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
       border-radius: 999px;
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 850;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
       margin-bottom: 22px;
-      background: rgba(121,255,216,0.07);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--lime);
+      border-radius: 50%;
+      box-shadow: 0 0 18px var(--lime);
     }
 
     h1 {
-      font-size: clamp(3.05rem, 7vw, 6.7rem);
-      line-height: 0.9;
-      letter-spacing: -0.08em;
-      margin-bottom: 25px;
+      font-size: clamp(46px, 7vw, 86px);
+      line-height: .93;
+      letter-spacing: -.075em;
+      max-width: 760px;
+      margin-bottom: 26px;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, var(--accent), #ffffff 45%, var(--accent-2));
+      background: linear-gradient(90deg, #fff, #b9f6ff 42%, #d0b8ff 70%, #ffb9ee);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .hero p.lead {
-      font-size: 1.22rem;
+    .hero-copy {
       color: var(--muted);
-      max-width: 680px;
-      margin-bottom: 30px;
+      font-size: clamp(18px, 2vw, 22px);
+      max-width: 660px;
+      margin-bottom: 34px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 22px;
+      margin-bottom: 32px;
     }
 
-    .micro-proof {
+    .proof-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 30px;
+      gap: 14px;
       max-width: 670px;
     }
 
-    .micro-proof div {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
+    .proof-pill {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
       border-radius: 18px;
-      padding: 15px;
+      padding: 14px;
     }
 
-    .micro-proof strong {
+    .proof-pill strong {
       display: block;
-      color: var(--white);
-      font-size: 1rem;
+      font-size: 22px;
       margin-bottom: 3px;
     }
 
-    .micro-proof span {
-      color: var(--muted);
-      font-size: 0.87rem;
-    }
-
-    .hero-note {
+    .proof-pill span {
       color: var(--muted-2);
-      font-size: 0.92rem;
+      font-size: 13px;
     }
 
-    .showcase {
+    .hero-visual {
       position: relative;
+      min-height: 650px;
+      perspective: 1200px;
     }
 
-    .mock-window {
-      position: relative;
-      min-height: 560px;
+    .storefront-card {
+      position: absolute;
+      inset: 20px 0 auto auto;
+      width: min(560px, 100%);
+      height: 640px;
       border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015)),
-        url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=85') center/cover;
-      box-shadow: 0 34px 110px rgba(0,0,0,0.62);
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,.2);
+      background: linear-gradient(180deg, #111827, #080b14);
+      box-shadow: var(--shadow);
+      transform: rotateY(-8deg) rotateX(4deg);
     }
 
-    .mock-window::before {
+    .street-scene {
+      height: 100%;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(9,13,27,.2), rgba(5,7,15,.96)),
+        url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80') center/cover;
+    }
+
+    .shop-window {
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      top: 21%;
+      height: 44%;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 20px;
+      background: rgba(2,8,16,.38);
+      box-shadow: inset 0 0 60px rgba(255,255,255,.06), 0 0 90px rgba(45,226,255,.16);
+      overflow: hidden;
+      backdrop-filter: blur(2px);
+    }
+
+    .shop-window:after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(5,5,7,0.78), rgba(5,5,7,0.24)),
-        repeating-linear-gradient(90deg, rgba(121,255,216,0.07) 0 1px, transparent 1px 15px);
-      mix-blend-mode: normal;
+        linear-gradient(115deg, transparent 10%, rgba(255,255,255,.24) 11%, transparent 20%, transparent 52%, rgba(255,255,255,.12) 54%, transparent 62%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 15px);
+      pointer-events: none;
     }
 
-    .reflection {
+    .led-content {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.12) 42%, transparent 55%);
-      transform: translateX(-12%);
+      inset: 18px;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 30% 15%, rgba(45,226,255,.33), transparent 28%),
+        radial-gradient(circle at 88% 88%, rgba(255,79,216,.32), transparent 26%),
+        rgba(5,7,15,.22);
+      animation: pulseGlow 3.8s ease-in-out infinite;
+      z-index: 2;
     }
 
-    .display-card {
-      position: absolute;
-      left: 34px;
-      right: 34px;
-      bottom: 34px;
-      border: 1px solid rgba(121,255,216,0.45);
-      background: rgba(5,5,7,0.64);
-      backdrop-filter: blur(9px);
-      border-radius: 26px;
-      padding: 28px;
-      box-shadow: 0 0 64px rgba(121,255,216,0.24);
-    }
-
-    .display-card .tag {
-      color: var(--accent);
+    .led-content .label {
+      color: var(--lime);
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0.09em;
-      font-size: 0.76rem;
+      letter-spacing: .12em;
       text-transform: uppercase;
       margin-bottom: 10px;
     }
 
-    .display-card h2 {
-      font-size: 2.45rem;
-      letter-spacing: -0.055em;
-      line-height: 1;
-      margin-bottom: 12px;
+    .led-content h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: .9;
+      letter-spacing: -.07em;
+      margin-bottom: 16px;
     }
 
-    .display-card p {
-      margin: 0;
-      color: #e7e7f4;
-      font-size: 1rem;
+    .led-content p {
+      color: #d7faff;
+      font-size: 16px;
+      max-width: 310px;
+    }
+
+    .mockup-tag {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(12px);
+      font-size: 13px;
+      font-weight: 800;
     }
 
     .floating-card {
       position: absolute;
-      top: 26px;
-      right: -16px;
-      width: 230px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.92);
-      color: #101018;
+      z-index: 4;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
       border-radius: 22px;
+      backdrop-filter: blur(18px);
       padding: 18px;
-      box-shadow: 0 24px 70px rgba(0,0,0,0.36);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+
+    .floating-card.one {
+      width: 220px;
+      top: 72px;
+      left: -24px;
+    }
+
+    .floating-card.two {
+      width: 240px;
+      right: -18px;
+      bottom: 116px;
     }
 
     .floating-card strong {
       display: block;
-      font-size: 1.05rem;
-      margin-bottom: 5px;
-      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+      font-size: 18px;
     }
 
-    .floating-card span {
-      color: #4b4c5c;
-      font-size: 0.9rem;
+    .floating-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.18); }
     }
 
     section {
-      padding: 88px 0;
-      border-top: 1px solid var(--line);
+      padding: 96px 0;
+      position: relative;
     }
 
     .section-head {
-      max-width: 790px;
-      margin-bottom: 44px;
+      max-width: 820px;
+      margin-bottom: 42px;
     }
 
     .section-head.center {
@@ -356,358 +433,448 @@
     }
 
     .kicker {
-      color: var(--accent);
+      color: var(--cyan);
       font-weight: 900;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.78rem;
+      font-size: 12px;
       margin-bottom: 14px;
     }
 
-    .section-head h2 {
-      font-size: clamp(2.2rem, 4vw, 4.15rem);
-      line-height: 0.98;
-      letter-spacing: -0.065em;
+    h2.section-title {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -.055em;
       margin-bottom: 18px;
     }
 
-    .section-head p {
+    .section-copy {
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 19px;
     }
 
-    .cards {
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
     .card {
-      background: linear-gradient(180deg, var(--panel-soft), var(--panel));
-      border: 1px solid var(--line);
-      border-radius: 27px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
       padding: 28px;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 20px 70px rgba(0,0,0,.18);
     }
 
-    .card.highlight {
-      border-color: rgba(121,255,216,0.35);
-      box-shadow: 0 0 70px rgba(121,255,216,0.07);
+    .card:hover {
+      background: rgba(255,255,255,.09);
     }
 
-    .card .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      margin-bottom: 22px;
-      background: rgba(121,255,216,0.1);
-      color: var(--accent);
-      font-size: 1.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(45,226,255,.2), rgba(94,33,230,.3));
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 24px;
     }
 
     .card h3 {
-      font-size: 1.34rem;
+      font-size: 23px;
+      line-height: 1.1;
+      letter-spacing: -.035em;
       margin-bottom: 10px;
-      letter-spacing: -0.035em;
     }
 
-    .card p, .card li, .card span {
+    .card p, .card li {
       color: var(--muted);
-    }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .comparison .bad {
-      background: rgba(255,122,156,0.07);
-      border-color: rgba(255,122,156,0.22);
-    }
-
-    .comparison .good {
-      background: rgba(121,255,216,0.07);
-      border-color: rgba(121,255,216,0.25);
-    }
-
-    .bullet-list {
-      list-style: none;
-      display: grid;
-      gap: 13px;
-      margin-top: 18px;
-    }
-
-    .bullet-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .bullet-list li::before {
-      content: "✓";
-      color: var(--accent);
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
-
-    .bad .bullet-list li::before {
-      content: "×";
-      color: var(--danger);
+      font-size: 15.5px;
     }
 
     .split {
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 44px;
-      align-items: start;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 52px;
+      align-items: center;
     }
 
-    .list {
+    .before-after {
+      position: relative;
+      min-height: 500px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.16);
+      background:
+        linear-gradient(180deg, rgba(5,7,15,.25), rgba(5,7,15,.92)),
+        url('https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=1200&q=80') center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .before-after:before {
+      content: "Before";
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      z-index: 3;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.55);
+      color: rgba(255,255,255,.7);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .after-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 54%;
+      height: 100%;
+      background:
+        linear-gradient(180deg, rgba(45,226,255,.1), rgba(94,33,230,.23)),
+        url('https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=1200&q=80') center/cover;
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+      border-left: 2px solid rgba(255,255,255,.7);
+    }
+
+    .after-panel:before {
+      content: "After";
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      z-index: 3;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(45,226,255,.18);
+      border: 1px solid rgba(45,226,255,.28);
+      color: white;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .display-box {
+      position: absolute;
+      right: 34px;
+      top: 30%;
+      width: 64%;
+      min-height: 180px;
+      border-radius: 20px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(45,226,255,.38), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255,79,216,.32), transparent 32%),
+        rgba(4,8,20,.48);
+      border: 1px solid rgba(255,255,255,.28);
+      box-shadow: 0 0 70px rgba(45,226,255,.22);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .display-box small {
+      color: var(--lime);
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .display-box strong {
+      font-size: 38px;
+      line-height: .95;
+      letter-spacing: -.06em;
+    }
+
+    .display-box span {
+      color: #c8fbff;
+      margin-top: 10px;
+    }
+
+    .bullet-list {
       display: grid;
       gap: 14px;
+      margin-top: 28px;
     }
 
-    .list-item {
+    .bullet {
       display: flex;
-      gap: 14px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255,255,255,0.035);
+      gap: 13px;
+      color: var(--muted);
+      font-size: 16px;
     }
 
     .tick {
-      color: var(--accent);
-      font-weight: 950;
-      flex: 0 0 auto;
-    }
-
-    .list-item span:not(.tick) {
-      color: var(--muted);
-    }
-
-    .dark-band {
-      background:
-        radial-gradient(circle at 20% 0%, rgba(121,255,216,0.08), transparent 30%),
-        linear-gradient(135deg, rgba(121,255,216,0.07), rgba(140,98,255,0.10));
-    }
-
-    .visual-row {
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      place-items: center;
+      color: #07101d;
+      background: var(--lime);
+      font-weight: 900;
+      font-size: 13px;
     }
 
-    .visual-card {
-      min-height: 260px;
-      border-radius: 25px;
-      border: 1px solid var(--line);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
+    .use-card {
       position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.52));
+      min-height: 280px;
+      overflow: hidden;
+      padding: 0;
     }
 
-    .visual-card::before {
+    .use-img {
+      height: 165px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .use-img:after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 15%, rgba(0,0,0,0.76));
-      z-index: 1;
+      inset: 20px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(45,226,255,.25), rgba(255,79,216,.18)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 10px);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 0 36px rgba(45,226,255,.2);
     }
 
-    .visual-card > * {
+    .use-body {
+      padding: 24px;
+    }
+
+    .founding {
+      background:
+        linear-gradient(135deg, rgba(94,33,230,.3), rgba(45,226,255,.16)),
+        rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 38px;
+      padding: 52px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 32px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .founding:before {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -120px;
+      top: -120px;
+      background: radial-gradient(circle, rgba(45,226,255,.32), transparent 68%);
+      pointer-events: none;
+    }
+
+    .founding h2 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      margin-bottom: 18px;
+    }
+
+    .founding p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 650px;
+      margin-bottom: 26px;
+    }
+
+    .founding-panel {
+      background: rgba(5,7,15,.42);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 28px;
+      padding: 26px;
       position: relative;
       z-index: 2;
     }
 
-    .visual-card h3 {
-      letter-spacing: -0.04em;
-      margin-bottom: 7px;
-    }
-
-    .visual-card p {
-      color: #dfdff0;
-      font-size: 0.94rem;
-    }
-
-    .beauty { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=80') center/cover; }
-    .fitness { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=700&q=80') center/cover; }
-    .hospitality { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=700&q=80') center/cover; }
-    .retail { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80') center/cover; }
-
-    .offer {
+    .founding-panel ol {
+      padding-left: 20px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .offer-card {
-      background: #fff;
-      color: #111118;
-      border-radius: 29px;
-      padding: 30px;
-      min-height: 100%;
-    }
-
-    .offer-card.featured {
-      background: linear-gradient(135deg, #79ffd8, #8c62ff);
-    }
-
-    .offer-card h3 {
-      font-size: 1.5rem;
-      letter-spacing: -0.045em;
-      margin-bottom: 8px;
-    }
-
-    .offer-card .price {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: -0.055em;
-      margin-bottom: 8px;
-    }
-
-    .offer-card .sub {
-      display: block;
-      color: #4b4c5c;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-    }
-
-    .offer-card ul {
-      display: grid;
-      gap: 11px;
-      list-style: none;
-      color: #333342;
-    }
-
-    .offer-card li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .offer-card li::before {
-      content: "✓";
-      font-weight: 900;
+      gap: 12px;
+      color: var(--muted);
     }
 
     .steps {
-      counter-reset: step;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 180px;
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      letter-spacing: -.03em;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .content-wall {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .content-tile {
+      min-height: 132px;
+      border-radius: 22px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(45,226,255,.2), transparent 35%),
+        rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .content-tile small {
+      color: var(--muted-2);
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    .content-tile strong {
+      font-size: 22px;
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .pricing-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
-    .step {
-      border: 1px solid var(--line);
-      border-radius: 25px;
-      padding: 24px;
-      background: rgba(255,255,255,0.035);
+    .price-card {
+      padding: 28px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.13);
     }
 
-    .step::before {
-      counter-increment: step;
-      content: "0" counter(step);
-      display: block;
-      color: var(--accent);
-      font-weight: 950;
+    .price-card.featured {
+      background:
+        linear-gradient(180deg, rgba(45,226,255,.13), rgba(94,33,230,.18)),
+        rgba(255,255,255,.09);
+      border-color: rgba(45,226,255,.34);
+      transform: translateY(-8px);
+    }
+
+    .price-card h3 {
+      font-size: 22px;
+      letter-spacing: -.035em;
+      margin-bottom: 10px;
+    }
+
+    .price-card .price {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      margin-bottom: 12px;
+    }
+
+    .price-card p {
+      color: var(--muted);
+      font-size: 14.5px;
       margin-bottom: 20px;
     }
 
-    .step h3 {
-      margin-bottom: 8px;
-      letter-spacing: -0.035em;
-    }
-
-    .step p {
+    .price-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
       color: var(--muted);
+      font-size: 14px;
     }
 
     .faq {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 12px;
     }
 
     details {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.035);
-      border-radius: 22px;
-      padding: 20px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 20px 22px;
     }
 
     summary {
       cursor: pointer;
-      font-weight: 850;
-      letter-spacing: -0.02em;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -.02em;
     }
 
     details p {
       color: var(--muted);
-      margin-top: 13px;
+      margin-top: 14px;
+      max-width: 840px;
     }
 
-    .cta {
-      text-align: center;
-      padding: 98px 0;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(121,255,216,0.12), transparent 34%),
-        linear-gradient(180deg, #07070d, #050507);
+    .form-section {
+      padding-bottom: 120px;
     }
 
-    .cta h2 {
-      font-size: clamp(2.5rem, 5vw, 5.2rem);
-      line-height: 0.96;
-      letter-spacing: -0.075em;
-      margin-bottom: 22px;
+    .form-wrap {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 34px;
+      align-items: start;
     }
 
-    .cta p {
-      color: var(--muted);
-      max-width: 720px;
-      margin: 0 auto 26px;
-      font-size: 1.12rem;
-    }
-
-    .form-box {
-      max-width: 790px;
-      margin: 34px auto 0;
-      padding: 26px;
-      background: #fff;
-      color: #111118;
-      border-radius: 30px;
-      text-align: left;
-      box-shadow: 0 30px 100px rgba(0,0,0,0.35);
-    }
-
-    .form-top {
-      margin-bottom: 18px;
-    }
-
-    .form-top h3 {
-      font-size: 1.55rem;
-      letter-spacing: -0.045em;
-      margin-bottom: 6px;
-    }
-
-    .form-top p {
-      color: #555568;
-      margin: 0;
-      font-size: 0.98rem;
+    .lead-form {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 32px;
+      padding: 30px;
+      box-shadow: var(--shadow);
     }
 
     .form-grid {
@@ -716,223 +883,264 @@
       gap: 14px;
     }
 
-    input, textarea, select {
-      width: 100%;
-      padding: 15px 16px;
-      border: 1px solid #dedee8;
-      border-radius: 14px;
-      font: inherit;
-      background: #fff;
+    .field {
+      display: grid;
+      gap: 8px;
     }
 
-    textarea {
-      min-height: 112px;
+    .field.full {
       grid-column: 1 / -1;
     }
 
-    .form-box button {
-      margin-top: 14px;
+    label {
+      color: #dfe7ff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input, select, textarea {
       width: 100%;
-      border: 0;
-      cursor: pointer;
+      min-height: 50px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(5,7,15,.58);
+      color: white;
+      padding: 13px 14px;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(45,226,255,.8);
+      box-shadow: 0 0 0 4px rgba(45,226,255,.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 112px;
     }
 
     .form-note {
-      text-align: center;
-      color: #666679;
-      font-size: 0.88rem;
-      margin-top: 12px;
+      color: var(--muted-2);
+      font-size: 13px;
+      margin-top: 14px;
     }
 
     footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 34px 0;
+      color: var(--muted-2);
+      font-size: 14px;
     }
 
-    @media (max-width: 980px) {
-      .nav-links {
-        display: none;
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1020px) {
+      .hero-grid, .split, .founding, .form-wrap {
+        grid-template-columns: 1fr;
       }
 
-      .hero-grid, .split, .cards, .offer, .steps, .problem-grid, .comparison, .visual-row, .faq {
-        grid-template-columns: 1fr;
+      .hero-visual {
+        min-height: 620px;
+      }
+
+      .storefront-card {
+        position: relative;
+        inset: auto;
+        margin: 0 auto;
+        transform: none;
+      }
+
+      .grid-3, .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .content-wall {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 20px;
+        right: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: rgba(5,7,15,.96);
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 22px;
+        padding: 22px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .mobile-toggle {
+        display: block;
       }
 
       .hero {
-        padding-top: 62px;
+        padding-top: 126px;
       }
 
-      .mock-window {
-        min-height: 470px;
+      .hero-actions, .proof-row {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-row {
+        display: grid;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .storefront-card {
+        height: 520px;
       }
 
       .floating-card {
-        right: 18px;
+        display: none;
       }
 
-      .micro-proof {
+      .grid-3, .grid-2, .pricing-grid, .steps, .content-wall, .form-grid {
         grid-template-columns: 1fr;
       }
 
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 520px) {
-      h1 {
-        font-size: 3.35rem;
+      .field.full {
+        grid-column: auto;
       }
 
-      .display-card h2 {
-        font-size: 2rem;
+      .founding {
+        padding: 30px;
+        border-radius: 28px;
+      }
+
+      .before-after {
+        min-height: 420px;
+      }
+
+      .display-box {
+        width: calc(100% - 48px);
+        right: 24px;
       }
 
       section {
-        padding: 68px 0;
+        padding: 72px 0;
       }
     }
   </style>
 </head>
 <body>
-  <div class="announcement">
-    <strong>Christchurch launch:</strong> now selecting 3 high-visibility businesses for early showcase storefronts.
-  </div>
-
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#" class="logo"><span class="logo-mark">F</span> Frontage</a>
-      <nav class="nav-links">
-        <a href="#problem">Problem</a>
-        <a href="#fit">Who it fits</a>
-        <a href="#offer">Offer</a>
-        <a href="#faq">FAQ</a>
-        <a href="#apply" class="btn btn-primary">Request Review</a>
+      <a class="brand" href="#top" aria-label="Christchurch Storefront Media home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Frontage<small>Christchurch Storefront Media</small></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#why">Why it works</a>
+        <a href="#uses">Use cases</a>
+        <a href="#founding">Founding 10</a>
+        <a href="#pricing">Packages</a>
+        <a href="#mockup" class="btn btn-primary">Get a mockup</a>
       </nav>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">✦ Transparent digital storefront displays</div>
-          <h1>Your shopfront should be your <span class="gradient-text">best ad space.</span></h1>
-          <p class="lead">Frontage helps Christchurch businesses turn high-traffic glass frontage into bright, transparent digital displays that promote offers, menus, launches and brand content without fully blocking the window.</p>
+        <div class="hero-copy-wrap reveal">
+          <div class="eyebrow"><span class="dot"></span> Launching in Christchurch</div>
+          <h1>Your storefront window could be your <span class="gradient-text">best-performing ad space.</span></h1>
+          <p class="hero-copy">We transform unused glass frontage into bright, transparent digital displays for offers, menus, launches, events and brand content, without fully blocking the view into your space.</p>
           <div class="hero-actions">
-            <a href="#apply" class="btn btn-primary">Apply for a free storefront review</a>
-            <a href="#how" class="btn btn-secondary">See how it works</a>
+            <a href="#mockup" class="btn btn-primary">Get a free storefront mockup</a>
+            <a href="#founding" class="btn btn-secondary">Apply for the Founding 10</a>
           </div>
-          <div class="hero-note">For beauty clinics, wellness studios, hospitality venues, gyms, premium retail, auto and real estate frontage.</div>
-
-          <div class="micro-proof">
-            <div><strong>Dynamic</strong><span>Change promotions without reprinting signage.</span></div>
-            <div><strong>Transparent</strong><span>Promote while keeping light and visibility.</span></div>
-            <div><strong>Local-first</strong><span>Built around Christchurch streets, suburbs and foot traffic.</span></div>
+          <div class="proof-row" aria-label="Key benefits">
+            <div class="proof-pill"><strong>24/7</strong><span>street-level brand presence</span></div>
+            <div class="proof-pill"><strong>Fast</strong><span>campaign and offer updates</span></div>
+            <div class="proof-pill"><strong>Local</strong><span>Christchurch-first rollout</span></div>
           </div>
         </div>
 
-        <div class="showcase">
-          <div class="mock-window" aria-label="Mock transparent storefront display preview">
-            <div class="reflection"></div>
-            <div class="display-card">
-              <div class="tag">Live campaign example</div>
-              <h2>Winter Skin Reset</h2>
-              <p>Book a consult this week. Limited appointments available.</p>
+        <div class="hero-visual reveal" aria-label="Transparent LED storefront mockup">
+          <div class="floating-card one">
+            <strong>Promote anything</strong>
+            <p>Offers, menus, launches, events, bookings and seasonal campaigns.</p>
+          </div>
+          <div class="storefront-card">
+            <div class="street-scene">
+              <div class="shop-window">
+                <div class="led-content">
+                  <div class="label">Tonight only</div>
+                  <h2>Winter Menu Launch</h2>
+                  <p>Walk-ins welcome. Scan to book or view specials.</p>
+                </div>
+              </div>
+              <div class="mockup-tag"><span class="dot"></span> Real storefront mockup concept</div>
             </div>
           </div>
-          <div class="floating-card">
-            <strong>From empty glass to attention asset</strong>
-            <span>Use your frontage for offers, launches, menus, events and brand storytelling.</span>
+          <div class="floating-card two">
+            <strong>Keep the glass open</strong>
+            <p>Transparent display technology keeps visibility while adding motion and light.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="problem">
+    <section id="why">
       <div class="container">
-        <div class="section-head center">
-          <div class="kicker">The problem</div>
-          <h2>Most storefront windows are visible, but underused.</h2>
-          <p>Your frontage already sits in front of people every day. The question is whether it is actively creating attention, desire and action.</p>
+        <div class="section-head center reveal">
+          <div class="kicker">Why it matters</div>
+          <h2 class="section-title">Most Christchurch shopfronts are not working hard enough.</h2>
+          <p class="section-copy">Your window is one of the most visible assets your business already has. But most storefronts rely on static posters, decals or nothing at all. We help turn that same glass into flexible media space that changes with your campaigns.</p>
         </div>
-        <div class="comparison">
-          <div class="card bad">
-            <h3>What most businesses rely on</h3>
-            <ul class="bullet-list">
-              <li>Static posters that quickly blend into the background</li>
-              <li>Window decals that are hard to update</li>
-              <li>Printed menus, A-frames and temporary signage</li>
-              <li>In-store screens that only work once people are already inside</li>
-              <li>Paid ads that disappear as soon as the budget stops</li>
-            </ul>
-          </div>
-          <div class="card good highlight">
-            <h3>What Frontage helps create</h3>
-            <ul class="bullet-list">
-              <li>A reusable digital campaign space on your own glass</li>
-              <li>Stronger street presence day and night</li>
-              <li>Content that can change with your offers, seasons and launches</li>
-              <li>A premium visual experience before people even enter</li>
-              <li>A physical attention channel your competitors do not have yet</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <div class="kicker">The solution</div>
-          <h2>Transparent digital displays for businesses that need to be noticed.</h2>
-          <p>This is not just a screen. It is a flexible storefront media system that lets you make your best promotions visible from the street.</p>
-        </div>
-        <div class="cards">
-          <div class="card">
-            <div class="icon">✦</div>
-            <h3>Capture attention outside</h3>
-            <p>Reach people while they are walking, driving, browsing or deciding where to go next.</p>
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="icon">👀</div>
+            <h3>Get noticed faster</h3>
+            <p>Motion, light and high-contrast content give people a reason to look up, pause and notice what you are promoting.</p>
           </div>
-          <div class="card">
-            <div class="icon">◈</div>
-            <h3>Keep your window open</h3>
-            <p>Transparent LED technology lets content appear on the glass while maintaining openness, light and visibility.</p>
+          <div class="card reveal">
+            <div class="icon">⚡</div>
+            <h3>Update campaigns quickly</h3>
+            <p>Change offers, menus, opening hours, event promos and seasonal campaigns without reprinting static signage.</p>
           </div>
-          <div class="card">
-            <div class="icon">↻</div>
-            <h3>Run real campaigns</h3>
-            <p>Use your frontage for weekly offers, seasonal promos, launches, menus, event reminders, social proof and brand content.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="fit" class="dark-band">
-      <div class="container">
-        <div class="section-head center">
-          <div class="kicker">Best-fit businesses</div>
-          <h2>Designed for visual, promotion-driven Christchurch businesses.</h2>
-          <p>The first sites should be places where attention can quickly turn into bookings, walk-ins, enquiries or stronger brand perception.</p>
-        </div>
-        <div class="visual-row">
-          <div class="visual-card beauty">
-            <h3>Beauty & aesthetics</h3>
-            <p>Treatments, consults, packages, launches and seasonal offers.</p>
-          </div>
-          <div class="visual-card fitness">
-            <h3>Fitness & wellness</h3>
-            <p>Trials, challenges, class launches, memberships and community events.</p>
-          </div>
-          <div class="visual-card hospitality">
-            <h3>Hospitality</h3>
-            <p>Menus, specials, walk-ins, live events and evening promotions.</p>
-          </div>
-          <div class="visual-card retail">
-            <h3>Retail & showrooms</h3>
-            <p>Product drops, premium displays, new arrivals and seasonal campaigns.</p>
+          <div class="card reveal">
+            <div class="icon">💎</div>
+            <h3>Create a premium presence</h3>
+            <p>Make your business feel more modern, confident and high-value from the street before someone even walks in.</p>
           </div>
         </div>
       </div>
@@ -940,88 +1148,176 @@
 
     <section>
       <div class="container split">
-        <div class="section-head">
-          <div class="kicker">Why now</div>
-          <h2>Christchurch is the right city to prove this.</h2>
-          <p>Christchurch has concentrated retail and hospitality zones, strong suburban hubs, modern glass frontage and enough local visibility for early showcase sites to stand out quickly.</p>
-        </div>
-        <div class="list">
-          <div class="list-item"><span class="tick">✓</span><div><strong>Visible local pockets</strong><br><span>CBD, Riverside, The Terrace, Victoria Street, Riccarton, Merivale, Sydenham, Addington, Ferrymead, Wigram and Moorhouse Ave all offer strong frontage opportunities.</span></div></div>
-          <div class="list-item"><span class="tick">✓</span><div><strong>Less visual noise than larger cities</strong><br><span>A strong install can become locally recognisable faster than it would in Auckland or Sydney.</span></div></div>
-          <div class="list-item"><span class="tick">✓</span><div><strong>Local business owners talk</strong><br><span>A few standout storefronts can create fast word-of-mouth across connected business communities.</span></div></div>
-          <div class="list-item"><span class="tick">✓</span><div><strong>First-mover advantage</strong><br><span>Most businesses are still relying on static signage, printed promos and underused glass.</span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="offer">
-      <div class="container">
-        <div class="section-head center">
-          <div class="kicker">The offer</div>
-          <h2>Start with proof before committing to an install.</h2>
-          <p>We make the opportunity tangible by reviewing your storefront and showing what your actual window could become.</p>
-        </div>
-        <div class="offer">
-          <div class="offer-card">
-            <h3>Storefront Review</h3>
-            <div class="price">Free</div>
-            <span class="sub">For eligible Christchurch businesses</span>
-            <ul>
-              <li>Frontage suitability review</li>
-              <li>Visibility and traffic assessment</li>
-              <li>Use-case recommendation</li>
-              <li>Approval and installation flags</li>
-            </ul>
+        <div class="before-after reveal" aria-label="Before and after storefront display concept">
+          <div class="after-panel">
+            <div class="display-box">
+              <small>After</small>
+              <strong>7 Day Trial</strong>
+              <span>Join this week. Limited spaces available.</span>
+            </div>
           </div>
-          <div class="offer-card featured">
-            <h3>Concept Mockup</h3>
-            <div class="price">Founding sites</div>
-            <span class="sub">Priority support for selected early sites</span>
-            <ul>
-              <li>Mockup using your real storefront</li>
-              <li>Campaign example for your business</li>
-              <li>Recommended display format</li>
-              <li>Clear pilot pricing pathway</li>
-            </ul>
-          </div>
-          <div class="offer-card">
-            <h3>Pilot Install</h3>
-            <div class="price">Quoted</div>
-            <span class="sub">Based on site, size, spec and install needs</span>
-            <ul>
-              <li>Measurement and supply coordination</li>
-              <li>Install planning and setup</li>
-              <li>Launch content pack</li>
-              <li>Optional monthly content refresh</li>
-            </ul>
+        </div>
+        <div class="reveal">
+          <div class="kicker">The transformation</div>
+          <h2 class="section-title">From overlooked glass to street-level attention.</h2>
+          <p class="section-copy">Transparent LED film turns your existing frontage into a bright digital display while keeping your window visually open. Use it for brand storytelling, campaigns, offers, QR codes and high-impact launch moments.</p>
+          <div class="bullet-list">
+            <div class="bullet"><span class="tick">✓</span><span>Show video, text, animation, offers and calls to action.</span></div>
+            <div class="bullet"><span class="tick">✓</span><span>Keep the display aligned with your current campaigns.</span></div>
+            <div class="bullet"><span class="tick">✓</span><span>Use one premium window instead of constantly replacing posters.</span></div>
+            <div class="bullet"><span class="tick">✓</span><span>Add monthly content support so the display stays fresh.</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="how" class="dark-band">
+    <section id="uses">
       <div class="container">
-        <div class="section-head center">
-          <div class="kicker">Simple process</div>
-          <h2>From unused glass to a working campaign asset.</h2>
-          <p>The early showcase process is designed to move quickly while still checking fit, approvals and installation realities.</p>
+        <div class="section-head reveal">
+          <div class="kicker">Use cases</div>
+          <h2 class="section-title">Built for businesses that need to be seen.</h2>
+          <p class="section-copy">The best first sites are visual, high-traffic, promotion-heavy businesses where attention has immediate value.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card use-card reveal">
+            <div class="use-img" style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="use-body"><h3>Cafes & restaurants</h3><p>Menus, lunch specials, happy hours, event nights, booking prompts and seasonal offers.</p></div>
+          </article>
+          <article class="card use-card reveal">
+            <div class="use-img" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="use-body"><h3>Gyms & studios</h3><p>Trials, class timetables, challenges, membership offers and transformation campaigns.</p></div>
+          </article>
+          <article class="card use-card reveal">
+            <div class="use-img" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="use-body"><h3>Beauty & wellness</h3><p>Treatment offers, premium brand content, bookings, packages and seasonal campaigns.</p></div>
+          </article>
+          <article class="card use-card reveal">
+            <div class="use-img" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="use-body"><h3>Retail stores</h3><p>Product drops, sale events, new arrivals, brand films and limited-time campaigns.</p></div>
+          </article>
+          <article class="card use-card reveal">
+            <div class="use-img" style="background-image:url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="use-body"><h3>Car dealerships</h3><p>Vehicle launches, finance offers, new arrivals, service promos and brand moments.</p></div>
+          </article>
+          <article class="card use-card reveal">
+            <div class="use-img" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="use-body"><h3>Real estate offices</h3><p>Listings, sold results, open homes, agent branding and neighbourhood campaigns.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="founding">
+      <div class="container">
+        <div class="founding reveal">
+          <div>
+            <div class="kicker">Limited Christchurch pilot</div>
+            <h2>Become one of Christchurch’s first 10 digital storefront showcases.</h2>
+            <p>We are selecting high-visibility local businesses to become early showcase sites. Selected businesses receive a storefront concept, preferred pilot pricing and launch content support in exchange for allowing us to document the transformation.</p>
+            <a href="#mockup" class="btn btn-primary">Apply for the Founding 10</a>
+          </div>
+          <div class="founding-panel">
+            <h3 style="margin-bottom:16px;font-size:24px;letter-spacing:-.04em;">Best-fit sites usually have:</h3>
+            <ol>
+              <li>Street-facing or shopping-centre-facing glass frontage.</li>
+              <li>A business that runs offers, events, menus, launches or campaigns.</li>
+              <li>An owner, manager or franchisee who wants stronger street presence.</li>
+              <li>Permission to use before-and-after content as a local case study.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="kicker">How it works</div>
+          <h2 class="section-title">From photo to launch campaign.</h2>
+          <p class="section-copy">We make the process simple, visual and commercially focused from the first conversation.</p>
         </div>
         <div class="steps">
-          <div class="step">
-            <h3>Apply</h3>
-            <p>Tell us about your business, location, frontage and what you want to promote.</p>
+          <div class="step reveal"><div class="step-num">1</div><h3>Send your storefront</h3><p>Upload a photo or tell us your location so we can assess the frontage.</p></div>
+          <div class="step reveal"><div class="step-num">2</div><h3>See your mockup</h3><p>We show what your actual window could look like as digital media.</p></div>
+          <div class="step reveal"><div class="step-num">3</div><h3>Measure and quote</h3><p>We confirm sizing, content goals, installation needs and approval considerations.</p></div>
+          <div class="step reveal"><div class="step-num">4</div><h3>Install and setup</h3><p>We coordinate supply, installation, software setup and basic training.</p></div>
+          <div class="step reveal"><div class="step-num">5</div><h3>Launch content</h3><p>You go live with campaign-ready content designed to attract attention.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Content ideas</div>
+          <h2 class="section-title">A screen is only as good as what you put on it.</h2>
+          <p class="section-copy">We help you think beyond “digital signage” and use your window like a campaign channel.</p>
+        </div>
+        <div class="content-wall">
+          <div class="content-tile reveal"><small>Retail</small><strong>New arrival</strong></div>
+          <div class="content-tile reveal"><small>Hospitality</small><strong>Tonight’s special</strong></div>
+          <div class="content-tile reveal"><small>Fitness</small><strong>7 day trial</strong></div>
+          <div class="content-tile reveal"><small>Beauty</small><strong>Winter skin reset</strong></div>
+          <div class="content-tile reveal"><small>Events</small><strong>Live music Friday</strong></div>
+          <div class="content-tile reveal"><small>Booking</small><strong>Scan to reserve</strong></div>
+          <div class="content-tile reveal"><small>Brand</small><strong>Video showcase</strong></div>
+          <div class="content-tile reveal"><small>Social proof</small><strong>Rated 4.9 stars</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="kicker">Packages</div>
+          <h2 class="section-title">Built around your window, goals and budget.</h2>
+          <p class="section-copy">Every site is different. These packages show the pathway from concept to full storefront transformation.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="price-card reveal">
+            <h3>Concept Mockup</h3>
+            <div class="price">From $250</div>
+            <p>For businesses exploring what their window could become.</p>
+            <ul>
+              <li>✓ Storefront review</li>
+              <li>✓ Visual mockup</li>
+              <li>✓ Rough sizing guide</li>
+              <li>✓ Credited if you proceed</li>
+            </ul>
           </div>
-          <div class="step">
-            <h3>Review</h3>
-            <p>We assess visibility, glass layout, campaign potential and likely approval complexity.</p>
+          <div class="price-card featured reveal">
+            <h3>Pilot Storefront</h3>
+            <div class="price">Custom quote</div>
+            <p>For one high-impact window or feature display area.</p>
+            <ul>
+              <li>✓ Site measurement</li>
+              <li>✓ Supply and install</li>
+              <li>✓ Setup and training</li>
+              <li>✓ Launch content pack</li>
+            </ul>
           </div>
-          <div class="step">
-            <h3>Mockup</h3>
-            <p>If suitable, we show how your real storefront could look with transparent digital content.</p>
+          <div class="price-card reveal">
+            <h3>Full Frontage</h3>
+            <div class="price">Custom quote</div>
+            <p>For larger glass frontage, flagship locations or multi-window displays.</p>
+            <ul>
+              <li>✓ Larger display area</li>
+              <li>✓ Premium campaign setup</li>
+              <li>✓ Multi-site planning</li>
+              <li>✓ Rollout support</li>
+            </ul>
           </div>
-          <div class="step">
-            <h3>Pilot</h3>
-            <p>Selected sites move into quote, measurement, supply, installation and launch content.</p>
+          <div class="price-card reveal">
+            <h3>Content Support</h3>
+            <div class="price">Monthly</div>
+            <p>For businesses that want fresh campaigns without doing it themselves.</p>
+            <ul>
+              <li>✓ Monthly refreshes</li>
+              <li>✓ Offer campaigns</li>
+              <li>✓ Seasonal promos</li>
+              <li>✓ Scheduling support</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1029,104 +1325,136 @@
 
     <section>
       <div class="container split">
-        <div class="section-head">
-          <div class="kicker">Founding 3</div>
-          <h2>We are selecting three Christchurch showcase storefronts.</h2>
-          <p>These first businesses will receive priority concept support and preferred pilot pricing in exchange for allowing us to document the transformation through before-and-after content.</p>
-          <div class="hero-actions" style="margin-top: 24px;">
-            <a href="#apply" class="btn btn-primary">Apply for Founding 3</a>
-          </div>
+        <div class="reveal">
+          <div class="kicker">Practical details</div>
+          <h2 class="section-title">We help you navigate approvals, install and content.</h2>
+          <p class="section-copy">Every location is different. We help consider landlord approval, shopping centre rules, signage requirements, electrical installation, product suitability and site visibility before you commit.</p>
         </div>
-        <div class="card highlight">
-          <h3>An ideal showcase site has:</h3>
-          <ul class="bullet-list">
-            <li>High-visibility glass facing foot or vehicle traffic</li>
-            <li>A strong visual brand or premium customer experience</li>
-            <li>Regular offers, events, menus, launches or campaigns</li>
-            <li>A decision-maker who can move quickly</li>
-            <li>Permission to use the install in photos, videos and case studies</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <div class="container">
-        <div class="section-head center">
-          <div class="kicker">FAQ</div>
-          <h2>Questions businesses usually ask first.</h2>
-          <p>These are the practical things we check before any serious install conversation.</p>
-        </div>
-        <div class="faq">
-          <details>
-            <summary>Will it block the view into my store?</summary>
-            <p>No, the goal is to use transparent display technology so your window can show digital content while still keeping a level of visibility and openness. The exact result depends on product type, brightness, pixel pitch and content design.</p>
+        <div class="faq reveal">
+          <details open>
+            <summary>Can people still see through the window?</summary>
+            <p>Yes. Transparent LED displays are designed to show digital content while preserving visibility through the glass. The exact result depends on the product, brightness, pixel pitch and installation type.</p>
           </details>
           <details>
-            <summary>Is this only for big shopfronts?</summary>
-            <p>No. Smaller feature windows can work well if the location, campaign and visibility are strong. A smaller, well-placed display can be more effective than a large display in the wrong location.</p>
+            <summary>Will it work in daylight?</summary>
+            <p>Brightness and placement matter. We assess sunlight exposure, viewing distance and the direction your window faces before recommending a display type.</p>
           </details>
           <details>
-            <summary>Do I need Council or landlord approval?</summary>
-            <p>Possibly. Approval depends on the site, tenancy, display type, content, brightness and whether it is treated as signage. We flag approval considerations during the storefront review.</p>
+            <summary>Can I update the content myself?</summary>
+            <p>Yes. Content is typically managed through a compatible control system. We can also provide monthly content support if you would rather have campaigns created for you.</p>
           </details>
           <details>
-            <summary>What content can we show?</summary>
-            <p>Offers, menus, launches, new arrivals, appointment availability, seasonal campaigns, brand video, testimonials, QR codes, event promos and simple calls to action.</p>
-          </details>
-          <details>
-            <summary>How much does it cost?</summary>
-            <p>It depends on display size, technology, brightness needs, installation complexity and content support. The first step is a storefront review so we can give a realistic pathway instead of guessing from generic pricing.</p>
-          </details>
-          <details>
-            <summary>Can you manage the content too?</summary>
-            <p>Yes. The strongest version of this is not just installing hardware. It is keeping the storefront active with fresh campaign content, seasonal updates and high-quality visuals.</p>
+            <summary>Do I need landlord or Council approval?</summary>
+            <p>It depends on your site, content, location and installation. We help identify the likely approval considerations before installation.</p>
           </details>
         </div>
       </div>
     </section>
 
-    <section id="apply" class="cta">
-      <div class="container">
-        <div class="kicker">Apply now</div>
-        <h2>Want to see your storefront transformed?</h2>
-        <p>Request a free Christchurch storefront review. If your site is a strong fit, we’ll show you what your actual window could look like as a transparent digital display.</p>
-        <div class="form-box">
-          <div class="form-top">
-            <h3>Request your storefront review</h3>
-            <p>Best for businesses with visible glass frontage in Christchurch or nearby commercial areas.</p>
+    <section id="mockup" class="form-section">
+      <div class="container form-wrap">
+        <div class="reveal">
+          <div class="kicker">Get started</div>
+          <h2 class="section-title">Want to see your own window transformed?</h2>
+          <p class="section-copy">Send us your details and we’ll review your frontage. If your site looks like a good fit, we’ll create a concept showing how your storefront could work as digital media.</p>
+          <div class="bullet-list">
+            <div class="bullet"><span class="tick">✓</span><span>Ideal for Christchurch businesses with visible glass frontage.</span></div>
+            <div class="bullet"><span class="tick">✓</span><span>Best for businesses that run offers, launches, menus, events or campaigns.</span></div>
+            <div class="bullet"><span class="tick">✓</span><span>Founding 10 applicants may receive preferred pilot pricing.</span></div>
           </div>
-          <form>
-            <div class="form-grid">
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="text" placeholder="Business name" />
-              <input type="text" placeholder="Suburb / street" />
-              <select>
-                <option>Business type</option>
-                <option>Beauty / skin / hair</option>
-                <option>Gym / Pilates / wellness</option>
-                <option>Hospitality</option>
-                <option>Retail</option>
-                <option>Auto / showroom</option>
-                <option>Real estate</option>
+        </div>
+
+        <form class="lead-form reveal" action="mailto:hello@example.com" method="post" enctype="text/plain">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="Name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="business">Business name</label>
+              <input id="business" name="Business name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="Phone" type="tel" />
+            </div>
+            <div class="field full">
+              <label for="address">Business address or suburb</label>
+              <input id="address" name="Business address" type="text" placeholder="e.g. Riccarton, Christchurch CBD, Merivale" />
+            </div>
+            <div class="field">
+              <label for="type">Business type</label>
+              <select id="type" name="Business type">
+                <option value="">Select one</option>
+                <option>Restaurant / cafe / bar</option>
+                <option>Gym / fitness studio</option>
+                <option>Beauty / wellness clinic</option>
+                <option>Retail store</option>
+                <option>Car dealership</option>
+                <option>Real estate / professional office</option>
                 <option>Other</option>
               </select>
-              <input type="text" placeholder="Website or Instagram" />
-              <textarea placeholder="What would you want to promote on your storefront display? Offers, menus, launches, events, appointments, products, brand content, etc."></textarea>
             </div>
-            <button class="btn btn-primary" type="button">Request free storefront review</button>
-            <div class="form-note">Demo form only. Connect to Formspree, Netlify Forms, HubSpot or a CRM before launching publicly.</div>
-          </form>
-        </div>
+            <div class="field">
+              <label for="role">Your role</label>
+              <select id="role" name="Role">
+                <option value="">Select one</option>
+                <option>Owner</option>
+                <option>Manager</option>
+                <option>Franchisee</option>
+                <option>Marketing</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">What would you want to promote?</label>
+              <textarea id="message" name="What they want to promote" placeholder="Offers, menus, events, class timetables, product launches, bookings, etc."></textarea>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" style="margin-top:18px;width:100%;">Request my storefront mockup</button>
+          <p class="form-note">Replace the form action with your preferred form tool, CRM or email service before publishing.</p>
+        </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © 2026 Frontage. Transparent digital storefront display concepts for Christchurch businesses.
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Frontage. Christchurch Storefront Media.</p>
+      <p>Transparent LED window displays, content support and storefront campaign strategy.</p>
     </div>
   </footer>
+
+  <script>
+    const toggle = document.getElementById('mobileToggle');
+    const links = document.getElementById('navLinks');
+    const year = document.getElementById('year');
+
+    year.textContent = new Date().getFullYear();
+
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
